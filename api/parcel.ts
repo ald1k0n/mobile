@@ -9,7 +9,7 @@ export const useGetTrackParcel = () => {
     onError: console.log,
     mutationFn: async (trackNumber: string) =>
       await axios
-        .get(`http://192.168.1.70:8000/parcel/${trackNumber}`)
+        .get(`${process.env.EXPO_PUBLIC_API_URL}:8000/parcel/${trackNumber}`)
         .then((res) => res.data),
   });
 };
@@ -18,7 +18,7 @@ export const useCreateParcel = () => {
   return useMutation({
     mutationFn: async (recipientId: string) =>
       await axios
-        .post(`http://192.168.1.70:8000/parcel`, {
+        .post(`${process.env.EXPO_PUBLIC_API_URL}:8000/parcel`, {
           recipientId,
         })
         .then((res) => res.data),
@@ -29,7 +29,7 @@ export const useGetParcelPdf = () => {
   return useMutation({
     mutationFn: async (parcelId: string) => {
       const response = await axios.get(
-        `http://192.168.1.70:8000/parcel/pdf/${parcelId}`,
+        `${process.env.EXPO_PUBLIC_API_URL}/parcel/pdf/${parcelId}`,
         { responseType: "arraybuffer" }
       );
       return response.data;
