@@ -18,7 +18,7 @@ export const useCreateParcel = () => {
   return useMutation({
     mutationFn: async (recipientId: string) =>
       await axios
-        .post(`${process.env.EXPO_PUBLIC_API_URL}:8000/parcel`, {
+        .post(`${process.env.EXPO_PUBLIC_API_URL}/parcel`, {
           recipientId,
         })
         .then((res) => res.data),
