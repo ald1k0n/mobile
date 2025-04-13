@@ -35,18 +35,15 @@ const TrackingScreen = () => {
   const { mutateAsync: getPdfUri } = useGetParcelPdf();
 
   const route = useRoute();
-  const { trackNumber } = route.params as {
-    trackNumber?: string;
-  };
 
   useEffect(() => {
-    if (trackNumber) {
-      fetchTrackingInfo(trackNumber);
+    if (route.params?.trackNumber) {
+      fetchTrackingInfo(route.params?.trackNumber);
       reset({
-        trackingNumber: trackNumber,
+        trackingNumber: route.params?.trackNumber,
       });
     }
-  }, [trackNumber]);
+  }, [route.params?.trackNumber]);
 
   const {
     control,

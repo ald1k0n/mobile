@@ -9,7 +9,7 @@ export const useGetTrackParcel = () => {
     onError: console.log,
     mutationFn: async (trackNumber: string) =>
       await axios
-        .get(`${process.env.EXPO_PUBLIC_API_URL}:8000/parcel/${trackNumber}`)
+        .get(`${process.env.EXPO_PUBLIC_API_URL}/parcel/${trackNumber}`)
         .then((res) => res.data),
   });
 };
